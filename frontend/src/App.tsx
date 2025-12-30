@@ -1,29 +1,12 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { HomePage } from './pages/home/HomePage';
-import { HallPage } from './pages/hall/HallPage';
+/**
+ * Application Entry Point
+ * @description Root component of the application
+ */
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 1,
-      staleTime: 30000,
-    },
-  },
-});
+import { StaffDashboard } from './pages/StaffDashboard';
 
-function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/hall/:hallId" element={<HallPage />} />
-          <Route path="/my-reservation" element={<div className="p-8 text-center">Rezervasyonum sayfası yakında...</div>} />
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
-  );
-}
+const App = () => {
+  return <StaffDashboard />;
+};
 
 export default App;
